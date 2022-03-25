@@ -1,4 +1,6 @@
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 /**
@@ -11,5 +13,6 @@ public class TestAnalyser {
 	public void testCensusAnalyser() {
 		StateCensusAnalyser analyser = new StateCensusAnalyser();
 		analyser.loadData();
+		assertEquals(true, analyser.checkData());
 	}
 }
