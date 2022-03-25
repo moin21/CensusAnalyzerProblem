@@ -26,7 +26,7 @@ public class StateCensusAnalyser {
 	 * catch FileNotFoundException - e catch CsvValidationException - e catch
 	 * IOException - e
 	 */
-	public void loadData() {
+	public void loadData(String filePath) throws InvalidFileException{
 
 		try {
 			CSVReader reader = new CSVReader(new FileReader("src/main/resources/IndiaStateCensusData.csv"));
