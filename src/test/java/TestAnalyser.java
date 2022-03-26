@@ -30,4 +30,8 @@ public class TestAnalyser {
 	public void CheckInvalidDelimeter() throws NumberFormatException, InvalidFileException, InvalidDelimiter {
 		analyser.loadData("src/main/resources/InvalidDelimeter.csv");
 	}
+	@Test
+	public void testHeaderCheckSad() throws InvalidFileException, InvalidDelimiter {
+		analyser.loadData("src/main/resources/WrongHeader.csv");
+	}
 }
