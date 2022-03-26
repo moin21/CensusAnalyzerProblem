@@ -25,14 +25,18 @@ public class StateCensusAnalyser {
 	 * loop. 3.Adding to list using add method. 4. Using for loop to display data.
 	 * catch FileNotFoundException - e catch CsvValidationException - e catch
 	 * IOException - e
+	 * @throws InvalidDelimiter 
 	 */
-	public void loadData(String filePath) throws InvalidFileException{
+	public void loadData(String filePath) throws InvalidFileException, InvalidDelimiter {
 
 		try {
 			CSVReader reader = new CSVReader(new FileReader("src/main/resources/IndiaStateCensusData.csv"));
 			String[] record;
 			record = reader.readNext();
 			while ((record = reader.readNext()) != null) {
+				if (record.length != 4) 
+					//custom exception for invalid delimiter
+					throw new InvalidDelimiter();
 				censusData.add(new CSVStateCensus(record[0], Long.parseLong(record[1]), Integer.parseInt(record[2]),
 						Double.parseDouble(record[3])));
 			}
@@ -48,6 +52,9 @@ public class StateCensusAnalyser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
